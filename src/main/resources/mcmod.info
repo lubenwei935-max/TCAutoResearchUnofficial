@@ -1,0 +1,21 @@
+{
+  "modListVersion": 2,
+  "modList": [{
+    "modid": "tcautoresearchunofficial",
+    "name": "TCAutoResearchUnofficial",
+    "description": "Unofficial continuation of TCAutoResearch by Emil. Research table helper: place aspects, auto-solve notes, unlock all aspects. Refactored: no GUI screen switching, no background threads touching the client, tick-paced actions.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["wohaopa", "Emil", "Mr.Chang"],
+    "credits": "Original TCAutoResearch by Emil (MIT). Refactor and maintenance by Mr.Chang.",
+    "logoFile": "",
+    "screenshots": [],
+    "parent": "",
+    "requiredMods": ["Thaumcraft"],
+    "dependencies": ["Thaumcraft"],
+    "dependants": [],
+    "useDependencyInformation": false
+  }]
+}

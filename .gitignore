@@ -1,0 +1,28 @@
+# Gradle / 构建产物
+build/
+.gradle/
+out/
+*.hprof
+
+# 第三方依赖：Thaumcraft 为闭源模组（All Rights Reserved），不随本仓库分发
+libs/*.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+
+# 运行目录 / 日志
+run/
+logs/
+crash-*.txt
+*.log
+
+# 系统
+.DS_Store
+Thumbs.db

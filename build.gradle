@@ -1,0 +1,117 @@
+// ===========================================================================
+//  TCAutoResearchUnofficial —— 神秘时代研究台自动解锁（Emil 原作的非官方续作）
+//  Minecraft 1.7.10 / ForgeGradle 1.2
+//  构建：gradle build   →  build/libs/TCAutoResearchUnofficial-1.7.10-1.0.0.jar
+// ===========================================================================
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { name = "forge"; url = "https://maven.minecraftforge.net/" }
+        maven { name = "sonatype"; url = "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge'
+
+version = "1.0.0"
+group = "com.emil.tcautoresearchunofficial"
+archivesBaseName = "TCAutoResearchUnofficial-1.7.10"
+
+sourceCompatibility = targetCompatibility = '1.8'
+
+minecraft {
+    version = "1.7.10-10.13.4.1614-1.7.10"
+    runDir = "run"
+}
+
+repositories {
+    flatDir { dirs 'libs' }
+}
+
+dependencies {
+    // 神秘时代 4.2.3.5（仅编译期依赖，发布时不打包）
+    compile files('libs/Thaumcraft-1.7.10-4.2.3.5.jar')
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+// 调试用：打印编译类路径（排查依赖问题）
+task printCompileCp {
+    doLast {
+        configurations.compile.files.each { println it }
+    }
+}
+
+// ForgeGradle 1.2 的官方 1.7.10 客户端下载地址早已下线。
+// 本机 ~/.gradle/caches/minecraft 里已有完整缓存时跳过这两个下载任务；
+// 需要真正重新下载时加 -PforceDownload。
+gradle.projectsEvaluated {
+    if (!project.hasProperty('forceDownload')) {
+        ['downloadClient', 'downloadServer', 'getVersionJson'].each { name ->
+            def t = tasks.findByName(name)
+            if (t != null) {
+                t.enabled = false
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// 发布前校验：jar 必须经过 reobf（MCP 名 -> SRG 名）。
+//
+// ForgeGradle 1.2 的开发工作区是 MCP 名（getMinecraft / thePlayer），
+// 而 1.7.10 生产环境是 SRG 名（func_71410_x / field_71439_g）。
+// `gradle jar` 只产出开发 jar，直接丢进 mods 会在运行期
+// NoSuchMethodError: Minecraft.getMinecraft()，而且异常发生在
+// InitGuiEvent.Post 里，会顺带把 NEI 的 GuiContainer.manager 初始化打断，
+// 表现为下一 tick 的 “Ticking screen” 空指针。
+//
+// 这里在 build 末尾做一次字节码检查，避免再发出未 reobf 的 jar。
+// ---------------------------------------------------------------------------
+task verifyReobf {
+    dependsOn 'reobf'
+    doLast {
+        def jarFile = file("$buildDir/libs/${archivesBaseName}-${version}.jar")
+        if (!jarFile.isFile()) {
+            throw new GradleException("找不到产物 jar: ${jarFile}")
+        }
+        def zip = new java.util.zip.ZipFile(jarFile)
+        try {
+            def entry = zip.getEntry('com/emil/tcautoresearchunofficial/research/ResearchTableAccess.class')
+            if (entry == null) {
+                throw new GradleException("jar 内缺少 ResearchTableAccess.class")
+            }
+            def stream = zip.getInputStream(entry)
+            def bytes = stream.bytes
+            stream.close()
+            def text = new String(bytes, 'ISO-8859-1')
+            if (text.contains('getMinecraft') || text.contains('thePlayer')) {
+                throw new GradleException("jar 未 reobf（仍含 MCP 名），1.7.10 生产环境会 NoSuchMethodError；请用 gradle build")
+            }
+        } finally {
+            zip.close()
+        }
+    }
+}
+
+build.dependsOn verifyReobf
+

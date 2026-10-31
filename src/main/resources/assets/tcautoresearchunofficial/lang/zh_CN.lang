@@ -1,0 +1,75 @@
+# 工具条
+tcautoresearchunofficial.tab.auto=自
+tcautoresearchunofficial.tab.solve=解
+tcautoresearchunofficial.tab.stop=停
+tcautoresearchunofficial.tab.replay=重
+tcautoresearchunofficial.tab.all=全
+tcautoresearchunofficial.tab.aspects=合
+tcautoresearchunofficial.tab.settings=设
+
+# 悬停提示
+tcautoresearchunofficial.tip.auto=自动解锁笔记：开着研究台时自动求解新笔记
+tcautoresearchunofficial.tip.solve=解锁当前笔记 / 停止正在进行的解锁
+tcautoresearchunofficial.tip.replay=按上次求解结果重新放置
+tcautoresearchunofficial.tip.all=解锁全部要素（自动补齐基础要素）
+tcautoresearchunofficial.tip.aspects=要素合成面板
+tcautoresearchunofficial.tip.settings=设置
+tcautoresearchunofficial.tip.cell=%s  已有 %s
+
+# 面板
+tcautoresearchunofficial.panel.aspects=要素合成
+tcautoresearchunofficial.panel.settings=设置
+tcautoresearchunofficial.panel.combine=合成
+tcautoresearchunofficial.panel.none=点击一个要素
+tcautoresearchunofficial.panel.count=合成 %s 个
+tcautoresearchunofficial.panel.owned=已有 %s
+tcautoresearchunofficial.setting.auto=自动解锁：%s
+tcautoresearchunofficial.setting.notify=完成提示：%s
+tcautoresearchunofficial.setting.prefer=优先现成要素：%s
+tcautoresearchunofficial.setting.preview=方案预览：%s
+tcautoresearchunofficial.setting.interval=操作间隔：%s tick
+
+# 方案预览
+tcautoresearchunofficial.panel.preview=方案预览
+tcautoresearchunofficial.preview.summary=放置 %s 个 · 合成 %s 次
+tcautoresearchunofficial.preview.insufficient=要素不足，无法完成
+tcautoresearchunofficial.preview.consume=✓ 已通过研究台规则校验，点「采用」开始
+tcautoresearchunofficial.preview.uncertain=六种基础要素的缺口（估算值，实际可能有出入）
+tcautoresearchunofficial.preview.accept=采用
+tcautoresearchunofficial.preview.cancel=取消
+tcautoresearchunofficial.status.preview=方案预览中，请确认
+tcautoresearchunofficial.on=开
+tcautoresearchunofficial.off=关
+
+# 状态行
+tcautoresearchunofficial.status.solving=求解中…
+tcautoresearchunofficial.status.running=执行中 %s / %s
+tcautoresearchunofficial.status.complete=笔记已完成
+tcautoresearchunofficial.status.auto=自动解锁：开
+tcautoresearchunofficial.status.idle=就绪
+
+# 消息
+tcautoresearchunofficial.msg.done=笔记解锁完成，共放置 %s 个要素
+tcautoresearchunofficial.msg.failed=解锁失败：%s
+tcautoresearchunofficial.msg.missingbase=缺少基础要素 [%s]
+tcautoresearchunofficial.msg.autoon=已开启自动解锁
+tcautoresearchunofficial.msg.autooff=已关闭自动解锁
+tcautoresearchunofficial.msg.nonote=研究台上没有笔记
+tcautoresearchunofficial.msg.complete=这份笔记已经完成了
+tcautoresearchunofficial.msg.busy=正在执行，请稍候
+tcautoresearchunofficial.msg.toolong=笔记太大，超出求解器参数长度限制
+tcautoresearchunofficial.msg.solving=正在求解…
+tcautoresearchunofficial.msg.solverfail=求解器异常（%s）
+tcautoresearchunofficial.msg.nolastsolution=没有上次的求解结果
+tcautoresearchunofficial.msg.differentnote=上次的结果不属于这份笔记
+tcautoresearchunofficial.msg.enough=数量已经足够
+tcautoresearchunofficial.msg.stopped=已停止
+tcautoresearchunofficial.msg.unsupported=求解器只提供 Windows 版本，当前系统不可用
+tcautoresearchunofficial.msg.allknown=所有研究要素都已经解锁了
+tcautoresearchunofficial.msg.allunlocked=要素补充完成
+tcautoresearchunofficial.msg.nosync=服务器没有响应合成/放置（要素不足或被拒绝）
+tcautoresearchunofficial.msg.preview=方案已生成，请确认
+tcautoresearchunofficial.msg.planCancelled=已取消该方案
+tcautoresearchunofficial.msg.invalidRetry=求解结果未通过校验，正在重解（%s / %s）
+tcautoresearchunofficial.msg.invalidGiveUp=求解结果未通过校验，已重试 %s 次，请稍后再试
+tcautoresearchunofficial.msg.combined=合成完成（%s 步）

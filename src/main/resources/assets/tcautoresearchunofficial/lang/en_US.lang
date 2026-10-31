@@ -1,0 +1,75 @@
+# toolbar
+tcautoresearchunofficial.tab.auto=A
+tcautoresearchunofficial.tab.solve=S
+tcautoresearchunofficial.tab.stop=X
+tcautoresearchunofficial.tab.replay=R
+tcautoresearchunofficial.tab.all=U
+tcautoresearchunofficial.tab.aspects=C
+tcautoresearchunofficial.tab.settings=O
+
+# tooltips
+tcautoresearchunofficial.tip.auto=Auto solve: solve every new note while the table is open
+tcautoresearchunofficial.tip.solve=Solve current note / stop the running plan
+tcautoresearchunofficial.tip.replay=Re-apply the previous solution
+tcautoresearchunofficial.tip.all=Unlock all aspects
+tcautoresearchunofficial.tip.aspects=Aspect crafting panel
+tcautoresearchunofficial.tip.settings=Settings
+tcautoresearchunofficial.tip.cell=%s  (have %s)
+
+# panels
+tcautoresearchunofficial.panel.aspects=Aspect crafting
+tcautoresearchunofficial.panel.settings=Settings
+tcautoresearchunofficial.panel.combine=Craft
+tcautoresearchunofficial.panel.none=Pick an aspect
+tcautoresearchunofficial.panel.count=Craft %s
+tcautoresearchunofficial.panel.owned=Have %s
+tcautoresearchunofficial.setting.auto=Auto solve: %s
+tcautoresearchunofficial.setting.notify=Finish toast: %s
+tcautoresearchunofficial.setting.prefer=Prefer owned aspects: %s
+tcautoresearchunofficial.setting.preview=Plan preview: %s
+tcautoresearchunofficial.setting.interval=Interval: %s tick(s)
+
+# plan preview
+tcautoresearchunofficial.panel.preview=Plan preview
+tcautoresearchunofficial.preview.summary=Place %s, craft %s
+tcautoresearchunofficial.preview.insufficient=Not enough aspects
+tcautoresearchunofficial.preview.consume=Validated against research table rules - click Apply
+tcautoresearchunofficial.preview.uncertain=Primal aspect shortage (estimated)
+tcautoresearchunofficial.preview.accept=Apply
+tcautoresearchunofficial.preview.cancel=Cancel
+tcautoresearchunofficial.status.preview=Plan preview, waiting for confirmation
+tcautoresearchunofficial.on=on
+tcautoresearchunofficial.off=off
+
+# status line
+tcautoresearchunofficial.status.solving=Solving...
+tcautoresearchunofficial.status.running=Running %s / %s
+tcautoresearchunofficial.status.complete=Note complete
+tcautoresearchunofficial.status.auto=Auto solve: on
+tcautoresearchunofficial.status.idle=Ready
+
+# messages
+tcautoresearchunofficial.msg.done=Note solved, %s aspect(s) placed
+tcautoresearchunofficial.msg.failed=Failed: %s
+tcautoresearchunofficial.msg.missingbase=Missing primal aspect [%s]
+tcautoresearchunofficial.msg.autoon=Auto solve enabled
+tcautoresearchunofficial.msg.autooff=Auto solve disabled
+tcautoresearchunofficial.msg.nonote=No note on the table
+tcautoresearchunofficial.msg.complete=This note is already complete
+tcautoresearchunofficial.msg.busy=Busy, please wait
+tcautoresearchunofficial.msg.toolong=Note too large for the solver argument limit
+tcautoresearchunofficial.msg.solving=Solving...
+tcautoresearchunofficial.msg.solverfail=Solver error (%s)
+tcautoresearchunofficial.msg.nolastsolution=No previous solution
+tcautoresearchunofficial.msg.differentnote=Previous solution belongs to another note
+tcautoresearchunofficial.msg.enough=Already enough
+tcautoresearchunofficial.msg.stopped=Stopped
+tcautoresearchunofficial.msg.unsupported=The solver binary is Windows-only; not available on this platform
+tcautoresearchunofficial.msg.allknown=All aspects are already unlocked
+tcautoresearchunofficial.msg.allunlocked=Aspects unlocked
+tcautoresearchunofficial.msg.nosync=The server did not accept the craft/place (not enough aspects or rejected)
+tcautoresearchunofficial.msg.preview=Plan ready, please confirm
+tcautoresearchunofficial.msg.planCancelled=Plan cancelled
+tcautoresearchunofficial.msg.invalidRetry=Plan failed validation, re-solving (%s / %s)
+tcautoresearchunofficial.msg.invalidGiveUp=Plan failed validation after %s retries, try again later
+tcautoresearchunofficial.msg.combined=Crafting finished (%s step(s))
