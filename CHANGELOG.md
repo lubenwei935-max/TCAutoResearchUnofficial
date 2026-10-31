@@ -2,6 +2,30 @@
 
 以下条目对应重构期的迭代版本（1.1.0-r2 ~ r9），发布版为 1.0.0。
 
+### 修复：研究台渲染的 ConcurrentModificationException（Hodgepodge 要素排序）
+
+**现象**：自动解锁运行中停留在研究台界面，退出世界时崩端：
+
+```
+java.util.ConcurrentModificationException
+  at java.util.LinkedHashMap$LinkedHashIterator.nextNode
+  at com.mitchej123.hodgepodge.util.AspectNameSorter.sort(AspectNameSorter.java:21)
+  at thaumcraft.client.gui.GuiResearchTable.redirect$dhg001$hodgepodge$getAspectsSortedName
+  at thaumcraft.client.gui.GuiResearchTable.drawAspectText(GuiResearchTable.java:400)
+```
+
+**根因**（三方叠加）：
+
+1. 渲染线程遍历 `PlayerKnowledge.getAspectsDiscovered(name).aspects`（`LinkedHashMap`）；
+2. `PacketAspectDiscovery.onMessage` 在 **Netty 线程**直接 `addDiscoveredAspect`，没有切回主线程；
+3. Hodgepodge 把 `AspectList.getAspectsSorted()`（先 `keySet().toArray()` 快照再排序）重定向成
+   `keySet().stream().sorted(...).toArray()`，整个排序都在推进同一个迭代器，窗口被放大几个数量级。
+
+**修复**：新增 `util/AspectMapGuard`，客户端每 20 tick 检查一次，用反射把该列表的
+`aspects` 字段替换成 `util/SafeAspectMap` —— 写操作（`put/remove/clear/putAll`）与遍历
+（`keySet/values/entrySet` 返回快照）共用同一把锁，遍历永远不会被写入打断。
+只影响客户端内存，不改存档与网络协议；配置项 `compat.SafeAspectIteration` 可关闭。
+
 ### 1.1.0-r9：浅色要素（灵气等）也能看出颜色
 
 **现象**：上色之后，`灵气 auram` 的图标依然像灰白色。

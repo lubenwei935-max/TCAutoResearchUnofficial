@@ -2,6 +2,7 @@ package com.emil.tcautoresearchunofficial.client;
 
 import com.emil.tcautoresearchunofficial.TCAutoResearchUnofficial;
 import com.emil.tcautoresearchunofficial.research.ResearchAssistant;
+import com.emil.tcautoresearchunofficial.util.AspectMapGuard;
 import com.emil.tcautoresearchunofficial.util.ClientTasks;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -20,6 +21,7 @@ public final class ClientTickHandler {
         }
         try {
             ClientTasks.drain();
+            AspectMapGuard.tick();
             ResearchAssistant.get().tick();
         } catch (Throwable t) {
             // 每 tick 都会跑，日志只记一次，避免刷屏

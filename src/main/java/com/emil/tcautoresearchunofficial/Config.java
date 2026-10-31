@@ -30,6 +30,8 @@ public final class Config {
     public static boolean previewPlan = true;
     /** 求解结果没通过校验时最多重解几次。 */
     public static int solverRetries = 2;
+    /** 给玩家要素列表加并发保护，规避 Hodgepodge + 神秘时代造成的渲染崩溃。 */
+    public static boolean safeAspectIteration = true;
 
     private static File configDirectory;
 
@@ -67,6 +69,11 @@ public final class Config {
                 "Show a plan preview (consumed aspects + blinking ghosts on the note) and ask before applying.");
         solverRetries = config.getInt("SolverRetries", "general", solverRetries, 0, 5,
                 "How many times to re-run the solver when its plan fails the research-table validation.");
+        safeAspectIteration = config.getBoolean("SafeAspectIteration", "compat", safeAspectIteration,
+                "Replace the player's aspect list with a traversal-safe map. Works around a "
+                        + "ConcurrentModificationException crash in the research table GUI caused by "
+                        + "Thaumcraft writing that list from the netty thread while it is being rendered "
+                        + "(more likely with Hodgepodge's aspect name sorting). Set to false to disable.");
         if (config.hasChanged()) {
             config.save();
         }

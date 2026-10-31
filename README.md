@@ -37,6 +37,16 @@ TC4Helper                       wohaopa              MIT
 - modid 为 `tcautoresearchunofficial`，与原版 `TCAutoResearchByEmil` **不同**，两者可同时安装
 - 配置独立：`config/tcautoresearchunofficial.cfg`，不读取旧配置，升级需重新设置
 
+## 兼容性修复
+
+**Hodgepodge + 神秘时代的研究台崩溃**（`ConcurrentModificationException`）：
+渲染线程在 `GuiResearchTable.drawAspectText` 里遍历玩家的「已发现要素」列表，
+而神秘时代的 `PacketAspectDiscovery` 会在 Netty 线程往同一个 `LinkedHashMap` 里写；
+Hodgepodge 把 `getAspectsSorted()` 改成 stream 排序后，遍历窗口变大，崩得更勤。
+
+本模组默认把该列表的 `aspects` 字段换成读写同锁、遍历返回快照的实现（`SafeAspectMap`），
+从源头消除这条竞态。配置项 `compat.SafeAspectIteration`（默认 `true`）可关闭。
+
 ## 构建
 
 需要 JDK 8 与 Gradle 2.x（ForgeGradle 1.2 的限制）：
