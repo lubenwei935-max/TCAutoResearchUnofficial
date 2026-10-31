@@ -1,0 +1,26 @@
+# NOTICE
+
+本仓库（TCAutoResearchUnofficial）是 **Emil** 所著 `TCAutoResearch` 的非官方续作。
+
+## 原始作品
+
+- 名称：TCAutoResearch
+- 作者：Emil
+- 授权：MIT License
+- 说明：本仓库的代码结构、求解协议与部分实现源自该作品，其原始版权声明（MIT）继续适用。
+
+## 本项目
+
+- 名称：TCAutoResearchUnofficial
+- 维护：wohaopa、Mr.Chang
+- 授权：MIT License（见 `LICENSE`）
+
+## 第三方组件
+
+| 组件 | 授权/归属 | 是否随本仓库分发 |
+| --- | --- | --- |
+| 神秘时代 Thaumcraft 1.7.10（Azanor） | 闭源，All Rights Reserved | **否**，仅作编译期依赖，需自行放入 `libs/` |
+| `src/main/resources/AutoResearch.zip`（内含 `AutoResearch.dll`） | 随原 TCAutoResearch（MIT）发布，算法未修改 | 是 |
+| Minecraft / MinecraftForge | Mojang / MinecraftForge 各自条款 | 否 |
+
+本项目与 Azanor、Mojang、MinecraftForge 均无隶属关系，也未获得其背书。

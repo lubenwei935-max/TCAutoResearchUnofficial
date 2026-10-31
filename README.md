@@ -398,7 +398,7 @@ runner.incrementNeed(aspect, have + count);
 
 ## 6. 授权与第三方组件
 
-- **本仓库代码以 MIT 协议发布**，见 [`LICENSE`](LICENSE)。
+- **本仓库代码以 MIT 协议发布**，见 [`LICENSE`](LICENSE)；原作者归属与第三方组件清单见 [`NOTICE`](NOTICE)。
   原版 `TCAutoResearch` 由 **Emil** 以 MIT 发布，本仓库是其非官方续作，保留原作者署名。
 - **不包含神秘时代（Thaumcraft）的 jar**。它是 Azanor 的闭源模组（All Rights Reserved），
   本项目仅把它作为编译期依赖；请自行放入 `libs/`，该目录下的 `*.jar` 已列入 `.gitignore`。
