@@ -5,8 +5,8 @@ import java.io.File;
 import net.minecraftforge.common.config.Configuration;
 
 /**
- * 配置。文件名为 {@code config/tcautoresearchunofficial.cfg}；键名沿用原版模组的
- * {@code AutoResearch}，方便从 Emil 的 TCAutoResearch 迁移设置时逐项对照。
+ * 配置。文件名为 {@code config/tcautoresearchunofficial.cfg}；键名沿用上游模组的
+ * {@code AutoResearch}，方便从 TC4AutoResearch 迁移设置时逐项对照。
  */
 public final class Config {
 
